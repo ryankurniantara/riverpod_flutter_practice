@@ -13,8 +13,10 @@ class DashBoardView extends ConsumerWidget {
     return Col(
       children: [
         // HEADER
-        Padding(
-          padding: EdgeInsets.all(20),
+        Container(
+          padding: EdgeInsets.all(10),
+          margin: Ei.only(b: 10),
+          decoration: BoxDecoration(border: Br.only(['b'], color: Colors.black)),
           child: Row(
             mainAxisAlignment: Maa.spaceBetween,
             children: [
@@ -84,7 +86,7 @@ class DashBoardView extends ConsumerWidget {
         ),
 
         SizedBox(height: 20),
-        // Padding
+        // Event Terupdate
         Col(
           children: [
             Padding(
@@ -95,7 +97,7 @@ class DashBoardView extends ConsumerWidget {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 100,
               child: ListView.builder(
                 shrinkWrap: true,
                 padding: Ei.all(10),
@@ -104,14 +106,43 @@ class DashBoardView extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   return Container(
                       margin: Ei.only(r: 10),
-                      height: 50,
-                      width: 50,
+                      padding: Ei.all(10),
                       decoration: BoxDecoration(
                           color: Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
                           borderRadius: BorderRadius.circular(10)),
-                      child: Text(
-                        'Task $index',
-                        style: Gfont.fs(20).copyWith(color: Colors.white),
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(
+                                  child: Text(
+                                    'Task $index',
+                                    style: Gfont.fs(20).copyWith(color: Colors.black),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Col(
+                            children: [
+                              Text(
+                                'Tanggal $index',
+                                style: Gfont.fs(14).copyWith(color: Colors.black),
+                              ),
+                              Text(
+                                'Meeting $index',
+                                style: Gfont.fs(20).copyWith(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ],
                       ));
                 },
               ),
